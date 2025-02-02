@@ -1,0 +1,4 @@
+select
+	*
+from
+	personal.addresses;
