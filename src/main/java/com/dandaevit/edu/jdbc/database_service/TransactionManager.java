@@ -5,12 +5,12 @@ import java.sql.SQLException;
 
 import com.dandaevit.edu.jdbc.data_base_connection_manager.DatabaseConnectionManager;
 
-public class TransactioManager {
+public class TransactionManager {
 	private Connection connection;
 
 	public boolean beginTransaction() throws SQLException {
 		if (connection != null) {
-			connection = DatabaseConnectionManager.getConnection();
+			connection = DatabaseConnectionManager.get();
 			connection.setAutoCommit(false);
 			return true;
 		}
@@ -18,7 +18,7 @@ public class TransactioManager {
 	}
 
 	public boolean commit() throws SQLException {
-		connection = DatabaseConnectionManager.getConnection();
+		connection = DatabaseConnectionManager.get();
 		if (connection != null) {
 			connection.commit();
 			connection.setAutoCommit(true);
@@ -29,7 +29,7 @@ public class TransactioManager {
 
 	public boolean rollBack() throws SQLException {
 		if (connection != null) {
-			connection = DatabaseConnectionManager.getConnection();
+			connection = DatabaseConnectionManager.get();
 			connection.rollback();
 			return true;
 		}

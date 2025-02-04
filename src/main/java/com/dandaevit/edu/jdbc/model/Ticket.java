@@ -67,4 +67,16 @@ public class Ticket {
 		this.cost = cost;
 	}
 
+	@Override
+	public String toString() {
+		return "Ticket {" +
+				"\n\tid=" + id +
+				",\n\tpassportNo='" + passportNo + '\'' +
+				",\n\tpassengerName='" + passengerName + '\'' +
+				",\n\tflightId=" + flightId +
+				",\n\tseatId=" + seatId +
+				",\n\tcost=" + cost +
+		"\n}";
+	}
+
 }
