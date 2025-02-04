@@ -16,7 +16,7 @@ public final class DatabaseConnectionManager {
 	private final static String PASSWORD_KEY = "database.password";
 
 	private static Connection connection;
-	
+
 	private final static String POOL_SIZE_KEY = "database.connection_pool.size";
 	private final static int DEFAULT_POOL_SIZE = 10;
 
@@ -25,10 +25,19 @@ public final class DatabaseConnectionManager {
 	private final static Logger LOGGER = LoggerFactory.getLogger(DatabaseConnectionManager.class.getName());
 
 	static {
+		loadDriver();
 		initConnectionPool();
 	}
 
 	private DatabaseConnectionManager() {
+	}
+
+	private static void loadDriver() {
+		try {
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	private static void initConnectionPool() {
@@ -52,7 +61,6 @@ public final class DatabaseConnectionManager {
 			connectionPool.add(proxyConnection);
 		}
 	}
-
 
 	private static Connection open() {
 		try {

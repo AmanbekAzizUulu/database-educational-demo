@@ -1,0 +1,67 @@
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+
+	<!--  Servlet Declaration -->
+	<servlet>
+		<servlet-name>FlightServlet</servlet-name>
+		<servlet-class>com.dandaevit.edu.jdbc.controllers.FlightServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>TicketServlet</servlet-name>
+		<servlet-class>com.dandaevit.edu.jdbc.controllers.TicketServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>CookiesServlet</servlet-name>
+		<servlet-class>com.dandaevit.edu.jdbc.controllers.CookiesServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>SessionServlet</servlet-name>
+		<servlet-class>com.dandaevit.edu.jdbc.controllers.SessionServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<servlet-class>com.dandaevit.edu.jdbc.controllers.DispatcherServlet</servlet-class>
+	</servlet>
+
+	<!-- JSP Declaration-->
+	<!-- -->
+	<!-- -->
+	<!-- -->
+
+	<!--  Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>FlightServlet</servlet-name>
+		<url-pattern>/flights</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>TicketServlet</servlet-name>
+		<url-pattern>/tickets</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>CookiesServlet</servlet-name>
+		<url-pattern>/cookies</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>SessionServlet</servlet-name>
+		<url-pattern>/sessions</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<url-pattern>/dispatcher</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- JSP Mapping -->
+	<!-- -->
+	<!-- -->
+	<!-- -->
+
+</web-app>

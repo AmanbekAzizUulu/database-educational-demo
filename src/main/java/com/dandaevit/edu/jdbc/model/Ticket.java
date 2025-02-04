@@ -7,15 +7,15 @@ public class Ticket {
 	private String passportNo;
 	private String passengerName;
 	private int flightId;
-	private int seatId;
+	private Seat seat;
 	private BigDecimal cost;
 
-	public Ticket(int id, String passportNo, String passangerName, int flightId, int seatId, BigDecimal cost) {
+	public Ticket(int id, String passportNo, String passangerName, int flightId, Seat seat, BigDecimal cost) {
 		this.id = id;
 		this.passportNo = passportNo;
 		this.passengerName = passangerName;
 		this.flightId = flightId;
-		this.seatId = seatId;
+		this.seat= seat;
 		this.cost = cost;
 	}
 
@@ -51,12 +51,12 @@ public class Ticket {
 		this.flightId = flightId;
 	}
 
-	public int getSeatId() {
-		return seatId;
+	public Seat getSeat() {
+		return this.seat;
 	}
 
-	public void setSeatId(int seatId) {
-		this.seatId = seatId;
+	public void setSeat(Seat seat) {
+		this.seat = seat;
 	}
 
 	public BigDecimal getCost() {
@@ -70,11 +70,11 @@ public class Ticket {
 	@Override
 	public String toString() {
 		return "Ticket {" +
-				"\n\tid=" + id +
-				",\n\tpassportNo='" + passportNo + '\'' +
-				",\n\tpassengerName='" + passengerName + '\'' +
-				",\n\tflightId=" + flightId +
-				",\n\tseatId=" + seatId +
+				"\n\tid=" + this.id +
+				",\n\tpassportNo='" + this.passportNo + '\'' +
+				",\n\tpassengerName='" + this.passengerName + '\'' +
+				",\n\tflightId=" + this.flightId +
+				",\n\t" + this.seat.toString() +
 				",\n\tcost=" + cost +
 		"\n}";
 	}

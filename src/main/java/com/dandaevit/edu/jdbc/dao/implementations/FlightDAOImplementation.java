@@ -63,7 +63,7 @@ public class FlightDAOImplementation implements FlightDAO {
 				flightHolder.setId(retrievedData.getInt("id"));
 				flightHolder.setFlightNo(retrievedData.getString("flight_no"));
 				flightHolder.setDepartureDate(retrievedData.getTimestamp("departure_date").toLocalDateTime());
-				flightHolder.setDepartureAirportCode("departure_airport_code");
+				flightHolder.setDepartureAirportCode(retrievedData.getString("departure_airport_code"));
 				flightHolder.setArrivalDate(retrievedData.getTimestamp("arrival_date").toLocalDateTime());
 				flightHolder.setArrivalAirportCode(retrievedData.getString("arrival_airport_code"));
 				flightHolder.setAircraftId(retrievedData.getInt("aircraft_id"));

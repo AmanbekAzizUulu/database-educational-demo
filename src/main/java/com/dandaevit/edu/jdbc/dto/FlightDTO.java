@@ -1,5 +1,9 @@
 package com.dandaevit.edu.jdbc.dto;
 
-public class FlightDTO {
-	
+public record FlightDTO(
+		int id,
+		String description) {
+
+	// → id
+	// → description 
 }

@@ -1,5 +1,6 @@
 package com.dandaevit.edu.jdbc.dao.interfaces;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.dandaevit.edu.jdbc.dto.TicketFilter;
@@ -17,5 +18,7 @@ public interface TicketDAO {
 
 	Ticket getTicketByID(int id) throws NoSuchTicketException;
 	List<Ticket> getAllTickets() throws AllTicketsSelectionException;
+	List<Ticket> getAllTicketsWithSeats() throws AllTicketsSelectionException;
 	List<Ticket> getAllTickets(TicketFilter filter) throws AllTicketsSelectionException;
+	List <Ticket> getAllTicketsByFlightId(int flightId) throws SQLException;
 }
