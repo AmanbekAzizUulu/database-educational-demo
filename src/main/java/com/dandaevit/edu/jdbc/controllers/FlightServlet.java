@@ -1,7 +1,6 @@
 package com.dandaevit.edu.jdbc.controllers;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 
 import com.dandaevit.edu.jdbc.service.FlightService;
@@ -34,7 +33,7 @@ public class FlightServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
-		resp.setCharacterEncoding(StandardCharsets.UTF_8);
+		// resp.setCharacterEncoding(StandardCharsets.UTF_8);
 
 		var flightsList = flightService.findAll().stream()
 				.map(
@@ -56,7 +55,7 @@ public class FlightServlet extends HttpServlet {
 				writer.write("<p>" + userInfo.toString() + "</p>");
 			}
 
-			// код ниже будет рабоать только если был includes из DispatcherServlet`а
+			// код ниже будет работать только если был includes из DispatcherServlet`а
 			var fromIncludes = (boolean) req.getAttribute("fromIncludes");
 			if (fromIncludes) {
 				writer.write("<br>");

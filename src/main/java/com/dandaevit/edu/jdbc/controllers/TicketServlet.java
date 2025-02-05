@@ -1,13 +1,13 @@
 package com.dandaevit.edu.jdbc.controllers;
 
 import java.io.IOException;
-import java.math.RoundingMode;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.dandaevit.edu.jdbc.dto.TicketDTO;
+import com.dandaevit.edu.jdbc.jsp_utils.JSPUtils;
 import com.dandaevit.edu.jdbc.service.TicketService;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -57,7 +57,7 @@ public class TicketServlet extends HttpServlet {
 	private final TicketService ticketService = TicketService.getInstance();
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		resp.setContentType("text/html; charset=UTF-8");
 		var writer = resp.getWriter();
 
@@ -77,15 +77,19 @@ public class TicketServlet extends HttpServlet {
 
 		List<TicketDTO> tickets = ticketService.getTicketsByFlightId(flightId);
 
-		String ticketsTable = tickets.stream()
-				.map(ticket ->
-						"<tr><td>" + ticket.passengerName() + "</td>" +
-						"<td>" + ticket.seat().getSeatNo() + "</td>" +
-						"<td>" + ticket.price().setScale(2, RoundingMode.HALF_UP).toString() + "</td></tr>")
-				.collect(Collectors.joining());
+		// String ticketsTable = tickets.stream()
+		// 		.map(ticket ->
+		// 				"<tr><td>" + ticket.passengerName() + "</td>" +
+		// 				"<td>" + ticket.seat().getSeatNo() + "</td>" +
+		// 				"<td>" + ticket.price().setScale(2, RoundingMode.HALF_UP).toString() + "</td></tr>")
+		// 		.collect(Collectors.joining());
 
-		String ticketsListByFlightIdHtml = TICKETS_HTML.formatted( ticketsTable);
+		// String ticketsListByFlightIdHtml = TICKETS_HTML.formatted( ticketsTable);
 
-		writer.write(ticketsListByFlightIdHtml);
+		// writer.write(ticketsListByFlightIdHtml);
+
+		req.setAttribute("tickets", tickets);
+
+		req.getRequestDispatcher(JSPUtils.getPath("tickets")).forward(req, resp);
 	}
 }

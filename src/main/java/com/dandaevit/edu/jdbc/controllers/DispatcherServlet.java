@@ -27,9 +27,11 @@ public class DispatcherServlet extends HttpServlet {
 
 		// req.getRequestDispatcher("/flights").include(req, resp);						// → includes
 
-		resp.sendRedirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUJcmljayByb2xs");			// → redirect
-		LOGGER.info("redirecting done");
+		// resp.sendRedirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUJcmljayByb2xs");			// → redirect
+		// LOGGER.info("redirecting done");
 
+		LOGGER.info("redirecting to tickets.jsp");
+		req.getRequestDispatcher("/WEB-INF/pages/tickets.jsp").forward(req, resp);
 	}
 
 }

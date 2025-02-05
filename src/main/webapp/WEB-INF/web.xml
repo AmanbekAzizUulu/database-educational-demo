@@ -2,6 +2,9 @@
 	<display-name>Archetype Created Web Application</display-name>
 
 	<!--  Servlet Declaration -->
+	<!-- -->
+	<!-- -->
+	<!-- -->
 	<servlet>
 		<servlet-name>FlightServlet</servlet-name>
 		<servlet-class>com.dandaevit.edu.jdbc.controllers.FlightServlet</servlet-class>
@@ -27,12 +30,27 @@
 		<servlet-class>com.dandaevit.edu.jdbc.controllers.DispatcherServlet</servlet-class>
 	</servlet>
 
+
+	<servlet>
+		<servlet-name>ContentServlet</servlet-name>
+		<servlet-class>com.dandaevit.edu.jdbc.controllers.ContentServlet</servlet-class>
+	</servlet>
+
 	<!-- JSP Declaration-->
 	<!-- -->
 	<!-- -->
 	<!-- -->
 
+	<servlet>
+		<servlet-name>TicketsJSP</servlet-name>
+		<jsp-file>/WEB-INF/pages/tickets.jsp</jsp-file>
+	</servlet>
+
+
 	<!--  Servlet Mapping -->
+	<!-- -->
+	<!-- -->
+	<!-- -->
 	<servlet-mapping>
 		<servlet-name>FlightServlet</servlet-name>
 		<url-pattern>/flights</url-pattern>
@@ -58,10 +76,19 @@
 		<url-pattern>/dispatcher</url-pattern>
 	</servlet-mapping>
 
+	<servlet-mapping>
+		<servlet-name>ContentServlet</servlet-name>
+		<url-pattern>/content</url-pattern>
+	</servlet-mapping>
+
 
 	<!-- JSP Mapping -->
 	<!-- -->
 	<!-- -->
 	<!-- -->
+	<servlet-mapping>
+		<servlet-name>TicketsJSP</servlet-name>
+		<url-pattern>/tickets-jsp</url-pattern>
+	</servlet-mapping>
 
 </web-app>
