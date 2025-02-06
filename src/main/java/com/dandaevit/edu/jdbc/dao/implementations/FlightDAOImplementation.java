@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dandaevit.edu.jdbc.dao.interfaces.FlightDAO;
+import com.dandaevit.edu.jdbc.data_base_connection_manager.DatabaseConnectionManager;
 import com.dandaevit.edu.jdbc.model.Flight;
 import com.dandaevit.edu.jdbc.sql_exceptions.flights_exception.AllFlightsSelectionException;
 import com.dandaevit.edu.jdbc.sql_exceptions.flights_exception.FlightDeletingException;
@@ -24,7 +25,7 @@ public class FlightDAOImplementation implements FlightDAO {
 			""";
 
 	private FlightDAOImplementation(Connection connection) {
-		this.connection = connection;
+		this.connection = DatabaseConnectionManager.get();
 	}
 
 	@Override

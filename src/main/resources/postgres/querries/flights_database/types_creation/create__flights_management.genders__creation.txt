@@ -1,0 +1,6 @@
+-- переименуй расширенеи этого файла в .sql
+-- одно из плаггинов неправильно парсит синтаксис для PostgreSQL
+
+-- Создание перечисления полов
+
+CREATE TYPE flights_management.gender_type AS ENUM ('female', 'male');

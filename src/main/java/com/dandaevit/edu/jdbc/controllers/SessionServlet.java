@@ -32,7 +32,7 @@ public class SessionServlet extends HttpServlet {
 					.contactNumber("+996554445555")
 					.login("__aibek007")
 					.password("123password456")
-					.role(Role.USER)
+					.role(Role.ADMIN)
 					.build();
 		}
 

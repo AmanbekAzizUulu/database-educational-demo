@@ -36,6 +36,11 @@
 		<servlet-class>com.dandaevit.edu.jdbc.controllers.ContentServlet</servlet-class>
 	</servlet>
 
+	<servlet>
+		<servlet-name>RegistrationServlet</servlet-name>
+		<servlet-class>com.dandaevit.edu.jdbc.controllers.RegistrationServlet</servlet-class>
+	</servlet>
+
 	<!-- JSP Declaration-->
 	<!-- -->
 	<!-- -->
@@ -44,6 +49,11 @@
 	<servlet>
 		<servlet-name>TicketsJSP</servlet-name>
 		<jsp-file>/WEB-INF/pages/tickets.jsp</jsp-file>
+	</servlet>
+
+	<servlet>
+		<servlet-name>FlightsJSP</servlet-name>
+		<jsp-file>/WEB-INF/pages/flights.jsp</jsp-file>
 	</servlet>
 
 
@@ -81,6 +91,10 @@
 		<url-pattern>/content</url-pattern>
 	</servlet-mapping>
 
+	<servlet-mapping>
+		<servlet-name>RegistrationServlet</servlet-name>
+		<url-pattern>/registration</url-pattern>
+	</servlet-mapping>
 
 	<!-- JSP Mapping -->
 	<!-- -->
@@ -90,5 +104,11 @@
 		<servlet-name>TicketsJSP</servlet-name>
 		<url-pattern>/tickets-jsp</url-pattern>
 	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>FlightsJSP</servlet-name>
+		<url-pattern>/flights-jsp</url-pattern>
+	</servlet-mapping>
+
 
 </web-app>

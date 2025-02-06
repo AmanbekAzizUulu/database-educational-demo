@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dandaevit.edu.jdbc.dao.interfaces.TicketDAO;
+import com.dandaevit.edu.jdbc.data_base_connection_manager.DatabaseConnectionManager;
 import com.dandaevit.edu.jdbc.dto.TicketFilter;
 import com.dandaevit.edu.jdbc.model.Seat;
 import com.dandaevit.edu.jdbc.model.Ticket;
@@ -72,7 +73,7 @@ public class TicketDAOImplementation implements TicketDAO {
 			""";
 
 	private TicketDAOImplementation(Connection connection) {
-		this.connection = connection;
+		this.connection = DatabaseConnectionManager.get();
 	}
 
 	@Override

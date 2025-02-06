@@ -1,6 +1,8 @@
 package com.dandaevit.edu.jdbc.sql_exceptions.tickets_exceptions;
 
-public class TicketCreationException extends Exception {
+import java.sql.SQLException;
+
+public class TicketCreationException extends SQLException {
 	public TicketCreationException(String message) {
 		super(message);
 	}

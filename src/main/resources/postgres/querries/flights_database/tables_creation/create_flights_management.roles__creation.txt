@@ -1,0 +1,27 @@
+-- переименуй расширенеи этого файла в .sql
+-- одно из плаггинов неправильно парсит синтаксис для PostgreSQL
+
+-- Создаем схему, если она еще не существует
+
+-- Создаем таблицу roles с ролью id и role_name
+CREATE TABLE flights_management.roles (
+    id SERIAL PRIMARY KEY,
+    role_name VARCHAR(50) NOT NULL,
+    role_code VARCHAR(60) UNIQUE NOT NULL
+);
+
+-- Создаем триггер, который будет автоматически генерировать значение для role_code
+CREATE OR REPLACE FUNCTION generate_role_code()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Генерируем значение role_code как комбинацию id и role_name
+    NEW.role_code := CONCAT(NEW.id, NEW.role_name);
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Создаем триггер, который сработает при вставке новой записи в таблицу roles
+CREATE TRIGGER trg_generate_role_code
+BEFORE INSERT ON flights_management.roles
+FOR EACH ROW
+EXECUTE FUNCTION generate_role_code();

@@ -1,3 +1,5 @@
+// данный класс использовался для получения данных
+
 package com.dandaevit.edu.jdbc.dto;
 
 import lombok.Builder;
