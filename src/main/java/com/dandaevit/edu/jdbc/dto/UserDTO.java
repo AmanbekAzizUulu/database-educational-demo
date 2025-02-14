@@ -2,9 +2,10 @@
 
 package com.dandaevit.edu.jdbc.dto;
 
+import com.dandaevit.edu.jdbc.model.user.Role;
+
 import lombok.Builder;
 import lombok.Data;
-import lombok.ToString;
 
 @Data
 @Builder
@@ -19,14 +20,4 @@ public class UserDTO {
 	private String contactNumber;
 	private Role role;
 
-	@ToString
-	public enum Role {
-		ADMIN("admin"), GUEST("guest"), USER("user");
-
-		private final String roleName;
-
-		private Role(String roleName){
-			this.roleName = roleName;
-		}
-	};
 }

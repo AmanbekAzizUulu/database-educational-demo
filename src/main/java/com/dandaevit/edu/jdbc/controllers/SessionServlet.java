@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 
 import com.dandaevit.edu.jdbc.data_base_connection_manager.DatabaseConnectionManager;
 import com.dandaevit.edu.jdbc.dto.UserDTO;
-import com.dandaevit.edu.jdbc.dto.UserDTO.Role;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -24,17 +23,17 @@ public class SessionServlet extends HttpServlet {
 		var session = req.getSession();
 		var user = session.getAttribute(USER);
 
-		if (user == null) {
-			user = UserDTO.builder()
-					.id(1001)
-					.email("aibekdandaev@gmail.com")
-					.userName("Aibek")
-					.contactNumber("+996554445555")
-					.login("__aibek007")
-					.password("123password456")
-					.role(Role.ADMIN)
-					.build();
-		}
+		// if (user == null) {
+		// 	user = UserDTO.builder()
+		// 			.id(1001)
+		// 			.email("aibekdandaev@gmail.com")
+		// 			.userName("Aibek")
+		// 			.contactNumber("+996554445555")
+		// 			.login("__aibek007")
+		// 			.password("123password456")
+		// 			.role(Role.ADMIN)
+		// 			.build();
+		// }
 
 		resp.getWriter().write("Session is new:\t" + String.valueOf(session.isNew()) + "\n");
 		resp.getWriter().write("Session data:\t" + user.toString() + "\n");

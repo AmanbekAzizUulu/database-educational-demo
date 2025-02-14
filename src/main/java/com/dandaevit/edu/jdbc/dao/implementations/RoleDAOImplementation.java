@@ -11,8 +11,7 @@ public class RoleDAOImplementation {
 	private final Connection connection;
 	private static RoleDAOImplementation INSTANCE;
 
-	private static final String SELECT_ALL_BY_ROLE_NAME =
-			"""
+	private static final String SELECT_BY_ROLE_NAME = """
 			SELECT
 				id,
 				role_name,
@@ -23,25 +22,54 @@ public class RoleDAOImplementation {
 				role_name = ?
 			""";
 
+	private static final String SELECT_ROLE_BY_ID = """
+			SELECT
+				id,
+				role_name,
+				role_code
+			FROM
+				flights_management.roles
+			WHERE
+				id = ?
+			""";
+
 	private RoleDAOImplementation(Connection connection) {
 		this.connection = DatabaseConnectionManager.get();
 	}
 
 	public Role getRoleByName(String roleName) throws SQLException {
-		try (var preparedStatement = connection.prepareStatement(SELECT_ALL_BY_ROLE_NAME)) {
+		try (var preparedStatement = connection.prepareStatement(SELECT_BY_ROLE_NAME)) {
 			preparedStatement.setString(1, roleName);
 
 			try (var resultSet = preparedStatement.executeQuery()) {
 				if (resultSet.next()) {
 					return Role.builder()
-							   .id(resultSet.getInt("id"))
-							   .roleName(resultSet.getString("role_name"))
-							   .roleCode(resultSet.getString("role_code"))
-							   .build();
+							.id(resultSet.getInt("id"))
+							.roleName(resultSet.getString("role_name"))
+							.roleCode(resultSet.getString("role_code"))
+							.build();
 				}
 			}
 		}
 		throw new NoSuchRoleException("Роль не найдена: " + roleName);
+	}
+
+	public Role getRoleById(Integer roleId) throws SQLException {
+		try (var preparedStatement = connection.prepareStatement(SELECT_ROLE_BY_ID)) {
+
+			preparedStatement.setInt(1, roleId);
+
+			try (var resultSet = preparedStatement.executeQuery()) {
+				if (resultSet.next()) {
+					return Role.builder()
+							.id(resultSet.getInt("id"))
+							.roleName(resultSet.getString("role_name"))
+							.roleCode(resultSet.getString("role_code"))
+							.build();
+				}
+			}
+		}
+		throw new NoSuchRoleException("Роль не найдена: " + roleId);
 	}
 
 	// Статический метод для получения единственного экземпляра

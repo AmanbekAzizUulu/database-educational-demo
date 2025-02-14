@@ -1,11 +1,12 @@
 package com.dandaevit.edu.jdbc.dao.utils.implementations;
 
 import com.dandaevit.edu.jdbc.dao.utils.interfaces.ValidateBeforeAction;
+import com.dandaevit.edu.jdbc.model.user.User;
 
-public class ValidateBeforeDeleteUtil implements ValidateBeforeAction {
+public class ValidateBeforeDeleteUtil implements ValidateBeforeAction<User> {
 
 	@Override
-	public boolean validate(Object entity) {
+	public boolean validate(User entity) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'validate'");
 	}

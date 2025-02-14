@@ -81,6 +81,15 @@
     	    	<input type="submit" value="Зарегистрироваться" class="btn btn-primary">
 			</div>
     	</form>
+
+		<c:if test="${not empty requestScope.errors}">
+			<div style="color: red">
+				<c:forEach items="${requestScope.errors}" var="item">
+					<span>${error.message}</span>
+					<br>
+				</c:forEach>
+			</div>
+		</c:if>
 	</div>
 
 	<script src="${pageContext.request.contextPath}/assets/scripts/validation/registration-validation.js"></script>

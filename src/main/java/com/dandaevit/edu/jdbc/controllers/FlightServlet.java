@@ -47,7 +47,7 @@ public class FlightServlet extends HttpServlet {
 		try (var writer = resp.getWriter()) {
 			writer.write(flightsListHtml);
 
-			// код ниже будет рабоать только если был forward из DispatcherServlet`а
+			// код ниже будет работать только если был forward из DispatcherServlet`а
 			var userInfo = req.getAttribute("userInfo");								// → Returns the value of the named attribute as an Object, or null if no attribute of the given name exists.
 			if (userInfo != null) {
 				writer.write("<br>");
@@ -63,7 +63,11 @@ public class FlightServlet extends HttpServlet {
 				writer.write("<p>Includes: "  + fromIncludes + "</p>");
 			}
 		}
+	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.getWriter().write("<h1>TEST</h1>");
 	}
 
 }

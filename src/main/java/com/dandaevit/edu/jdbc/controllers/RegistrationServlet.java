@@ -10,6 +10,7 @@ import com.dandaevit.edu.jdbc.data_base_connection_manager.DatabaseConnectionMan
 import com.dandaevit.edu.jdbc.dto.CreateUserDTO;
 import com.dandaevit.edu.jdbc.jsp_utils.JSPUtils;
 import com.dandaevit.edu.jdbc.service.UserService;
+import com.dandaevit.edu.jdbc.sql_exceptions.validation_exc.ValidationException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -52,8 +53,13 @@ public class RegistrationServlet extends HttpServlet {
 				.confirmPassword(req.getParameter("userConfirmPassword"))
 				.build();
 
-		var user = userService.createUser(createUserDTO);
-		req.getRequestDispatcher(JSPUtils.getPath("content")).forward(req, resp);
-		resp.getWriter().println(user);
+		try {
+			userService.createUser(createUserDTO);
+			resp.sendRedirect(JSPUtils.getPath("login"));
+		} catch (ValidationException e) {
+			// TODO
+			req.setAttribute("errors", e.getErrors());
+			doGet(req, resp);
+		}
 	}
 }
